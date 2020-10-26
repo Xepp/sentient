@@ -1,0 +1,16 @@
+version: '3.2'
+
+services:
+  athena:
+    build:
+      context: athena/
+    restart: always
+    ports:
+      - "5001:5001"
+    networks:
+      - sentient
+
+networks:
+  sentient:
+    driver: bridge
+
