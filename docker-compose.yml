@@ -24,6 +24,15 @@ services:
     depends_on:
       - athena
 
+  nginx:
+    build: ./nginx
+    image: nginx
+    container_name: nginx
+    ports:
+      - 80:80
+    depends_on:
+      - rest
+
 networks:
   sentient:
     driver: bridge
