@@ -139,6 +139,9 @@ cython_debug/
 
 # vim
 *.swp
+<<<<<<< HEAD
 
 # pyrogram
 *.session
+=======
+>>>>>>> feat: added rest structure dockerized

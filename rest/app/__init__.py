@@ -30,4 +30,3 @@ app.register_blueprint(instagram_blueprint, url_prefix='/api/instagram')
 app.register_blueprint(twitter_blueprint, url_prefix='/api/twitter')
 app.register_blueprint(web_blueprint, url_prefix='/api/web')
 app.register_blueprint(telegram_blueprint, url_prefix='/api/telegram')
-
