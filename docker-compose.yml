@@ -1,6 +1,7 @@
 version: '3.2'
 
 services:
+
   athena:
     build:
       context: athena/
@@ -9,6 +10,19 @@ services:
       - "5001:5001"
     networks:
       - sentient
+
+  rest:
+    build: ./rest
+    image: rest
+    container_name: rest
+    expose:
+      - 5000
+    working_dir: /usr/src/app/rest
+    command: python manage.py runserver --host 0.0.0.0 --debug
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - athena
 
 networks:
   sentient:
