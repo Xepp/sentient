@@ -3,13 +3,15 @@ version: '3.2'
 services:
 
   athena:
-    build:
-      context: athena/
-    restart: always
-    ports:
-      - "5001:5001"
-    networks:
-      - sentient
+    build: ./athena
+    image: athena
+    container_name: athena
+    expose:
+      - 5001
+    working_dir: /app/athena
+    command: python main.py
+    volumes:
+      - .:/app
 
   rest:
     build: ./rest
@@ -32,8 +34,4 @@ services:
       - 80:80
     depends_on:
       - rest
-
-networks:
-  sentient:
-    driver: bridge
 
