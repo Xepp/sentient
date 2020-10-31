@@ -33,4 +33,3 @@ def tweet_cleanizer(status):
         'retweet_count': tweet.get('retweet_count'),
         'favorite_count': tweet.get('favorite_count')
     }
-
