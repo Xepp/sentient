@@ -3,6 +3,7 @@ from flask import json
 from werkzeug.exceptions import HTTPException
 
 from app.main import create_app
+from app.main.controller.instagram import instagram_blueprint
 
 
 env = 'prod' if os.getenv('FLASK_ENV') == 'production' else 'dev'
@@ -20,4 +21,7 @@ def handle_http_exception(e):
     response.content_type = 'application/json'
 
     return response
+
+
+app.register_blueprint(instagram_blueprint, url_prefix='/api/instagram')
 
