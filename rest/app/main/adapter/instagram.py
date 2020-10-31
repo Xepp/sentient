@@ -73,4 +73,3 @@ class InstagramScraperAdapter:
         comments = [self.parse_comment(cm) for cm in comments]
 
         return comments, new_end_cursor, has_next_page
-
