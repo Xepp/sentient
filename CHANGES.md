@@ -14,3 +14,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Instagram source
 - Twitter source
 - Web source
+- Telegram Source
