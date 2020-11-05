@@ -26,4 +26,3 @@ class TelegramAdapter:
             messages = app.get_history(username, offset_id=offset_id)
 
             return [self.parse_message(message) for message in messages]
-

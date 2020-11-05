@@ -27,4 +27,3 @@ def get_messages_by_username(username):
     }
 
     return jsonify(res)
-
