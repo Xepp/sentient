@@ -8,3 +8,4 @@ tweepy==3.9.0
 beautifulsoup4==4.9.3
 requests==2.24.0
 Pyrogram==1.0.7
+igramscraper==0.3.5
