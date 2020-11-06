@@ -12,4 +12,3 @@ class InstagramService:
         comments, new_end_cursor, has_next_page = self.adapter.get_media_comments(shortcode=shortcode, end_cursor=end_cursor)
 
         return comments, new_end_cursor, has_next_page
-
