@@ -3,6 +3,7 @@ from flask import request
 from flask import jsonify
 
 from app.main.service.instagram import InstagramService
+from app.main.service.athena import AthenaService
 
 
 instagram_blueprint = Blueprint('instagram', __name__)
@@ -14,6 +15,12 @@ def get_comments_by_shortcode(shortcode):
 
     ig_service = InstagramService()
     comments, new_end_cursor, has_next_page = ig_service.get_comments(shortcode=shortcode, end_cursor=end_cursor)
+
+    text_list = [cm['text'] for cm in comments]
+    athena_service = AthenaService()
+    sentiment = athena_service.get_predicted_sentiment(text_list)
+    for index, cm in enumerate(comments):
+        cm['sentiment'] = sentiment[index]
 
     res = {
         'comments': comments,
