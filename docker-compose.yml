@@ -17,6 +17,8 @@ services:
     build: ./rest
     image: rest
     container_name: rest
+    environment:
+      - ATHENA_BASE_URL=http://athena:5001
     expose:
       - 5000
     working_dir: /usr/src/app/rest

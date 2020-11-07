@@ -4,6 +4,7 @@ from flask import jsonify
 from flask import abort
 
 from app.main.service.web import KhabarFooriService
+from app.main.service.athena import AthenaService
 
 
 web_blueprint = Blueprint('web', __name__)
@@ -18,6 +19,21 @@ def get_khabar_foori_comments():
 
     service = KhabarFooriService()
     comments = service.get_comments(url=url)
+
+    text_list = []
+    for cm in comments:
+        text_list.append(cm['text'])
+        for reply in cm['replays']:
+            text_list.append(reply['text'])
+    athena_service = AthenaService()
+    sentiment = athena_service.get_predicted_sentiment(text_list)
+    index = 0
+    for cm in comments:
+        cm['sentiment'] = sentiment[index]
+        index += 1
+        for reply in cm['replays']:
+            reply['sentiment'] = sentiment[index]
+            index += 1
 
     res = {
         'comments': comments
