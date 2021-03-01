@@ -16,7 +16,8 @@ class TwitterAdapter:
             screen_name=screen_name,
             since_id=since_id,
             max_id=max_id,
-            count=count)
+            count=count,
+            tweet_mode='extended')
 
         return [tweet_cleanizer(tweet) for tweet in timeline]
 

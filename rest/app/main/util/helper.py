@@ -13,6 +13,7 @@ def tweet_cleanizer(status):
     tweet = getattr(status, '_json')
     tweet_type = get_tweet_type(tweet)
     text = tweet.get('extended_tweet', {}).get('full_text', tweet.get('text', ''))
+    text = text or tweet.get('full_text')
 
     return {
         'id': tweet.get('id_str'),
