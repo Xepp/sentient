@@ -1,0 +1,40 @@
+.panel-sidebar{
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: $sidebar-width;
+  height: 100%;
+  padding: 1rem 0;
+  background-color: $secondary;
+  z-index: 999;
+  .sidebar-logo{
+    display: block;
+    padding: 0 10px;
+    margin-bottom: 2rem;
+    transition: $transition-default;
+    &:hover{
+      opacity: .8;
+    }
+    img{
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  .nav-item{
+    font-size: $fontsize-md;
+    color: $white;
+    margin: 1.1rem auto;
+    border-radius: $border-radius-md;
+    transition: $transition-default;
+    &.router-link-exact-active{
+      background-color: $light;
+      color: $secondary;
+    }
+    &:hover{
+      opacity: .8;
+      background-color: $dark;
+      color: $light;
+    }
+  }
+}
