@@ -8,6 +8,10 @@
     <khabar-foori-form
       @submit="onSubmit"
     ></khabar-foori-form>
+    <analysis-sentiment-pie
+      v-show="comments.length > 0"
+      :items="comments"
+    ></analysis-sentiment-pie>
     <khabar-foori-feed-comment
       v-for="(comment, index) in comments"
       :key="index"
@@ -26,12 +30,14 @@
 import { mapActions } from 'vuex'
 import KhabarFooriFeedComment from '@/components/KhabarFooriFeedComment'
 import KhabarFooriForm from '@/components/KhabarFooriForm'
+import AnalysisSentimentPie from '@/components/AnalysisSentimentPie'
 
 export default {
   name: 'KhabarFoori',
   components: {
     KhabarFooriFeedComment,
-    KhabarFooriForm
+    KhabarFooriForm,
+    AnalysisSentimentPie
   },
   data: function () {
     return {

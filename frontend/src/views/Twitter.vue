@@ -8,6 +8,10 @@
     <twitter-form
       @submit="onSubmit"
     ></twitter-form>
+    <analysis-sentiment-pie
+      v-show="statuses.length > 0"
+      :items="statuses"
+    ></analysis-sentiment-pie>
     <twitter-feed-item
       v-for="item in statuses"
       :key="item.id"
@@ -34,12 +38,14 @@ import { mapActions } from 'vuex'
 import { uniqBy } from 'lodash'
 import TwitterFeedItem from '@/components/TwitterFeedItem'
 import TwitterForm from '@/components/TwitterForm'
+import AnalysisSentimentPie from '@/components/AnalysisSentimentPie'
 
 export default {
   name: 'Twitter',
   components: {
     TwitterFeedItem,
-    TwitterForm
+    TwitterForm,
+    AnalysisSentimentPie
   },
   data: function () {
     return {

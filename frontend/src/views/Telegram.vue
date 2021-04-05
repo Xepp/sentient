@@ -8,6 +8,10 @@
     <telegram-form
       @submit="onSubmit"
     ></telegram-form>
+    <analysis-sentiment-pie
+      v-show="messages.length > 0"
+      :items="messages"
+    ></analysis-sentiment-pie>
     <telegram-channel-post
       v-for="post in messages"
       :key="post.id"
@@ -32,12 +36,14 @@
 import { mapActions } from 'vuex'
 import TelegramChannelPost from '@/components/TelegramChannelPost'
 import TelegramForm from '@/components/TelegramForm'
+import AnalysisSentimentPie from '@/components/AnalysisSentimentPie'
 
 export default {
   name: 'Telegram',
   components: {
     TelegramChannelPost,
-    TelegramForm
+    TelegramForm,
+    AnalysisSentimentPie
   },
   data: function () {
     return {

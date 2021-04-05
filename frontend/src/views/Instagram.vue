@@ -8,6 +8,10 @@
     <instagram-form
       @submit="onSubmit"
     ></instagram-form>
+    <analysis-sentiment-pie
+      v-show="comments.length > 0"
+      :items="comments"
+    ></analysis-sentiment-pie>
     <instagram-post-comment
       v-for="comment in comments"
       :key="comment.id"
@@ -30,12 +34,14 @@
 import { mapActions } from 'vuex'
 import InstagramPostComment from '@/components/InstagramPostComment'
 import InstagramForm from '@/components/InstagramForm'
+import AnalysisSentimentPie from '@/components/AnalysisSentimentPie'
 
 export default {
   name: 'Instagram',
   components: {
     InstagramPostComment,
-    InstagramForm
+    InstagramForm,
+    AnalysisSentimentPie
   },
   data: function () {
     return {
