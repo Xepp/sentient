@@ -20,7 +20,9 @@ class InstagramWebAdapter:
     def __init__(self):
         self.api = InstagramWebClient(
             auto_patch=False,
-            drop_incompat_keys=False
+            drop_incompat_keys=False,
+            username='alirezakk22',
+            password='waKM7T47Tf5nHYE'
         )
 
     def get_media_comments(self, shortcode, end_cursor=None, count=50):
@@ -49,6 +51,8 @@ class InstagramScraperAdapter:
 
     def __init__(self):
         self.api = Instagram()
+        #  self.api.with_credentials('alirezakk22', 'waKM7T47Tf5nHYE')
+        #  self.api.login()
 
     @staticmethod
     def parse_comment(comment):

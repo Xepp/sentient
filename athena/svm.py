@@ -11,7 +11,7 @@ from preprocess import word_tokenizer
 
 
 ##### Dataset #####
-x_train, y_train, x_test, y_test = get_dataset(test_size=0.25)
+x_train, y_train, x_test, y_test = get_dataset(file_path='tagged.csv', test_size=0.2)
 
 
 ##### PreProcess #####
@@ -28,7 +28,7 @@ y_test  = np.asarray(y_test)
 svm = Pipeline([
           ('vect', CountVectorizer(tokenizer=word_tokenizer, analyzer='word', ngram_range=(1, 2), min_df=1, lowercase=False)),
           ('tfidf', TfidfTransformer(sublinear_tf=True)),
-          ('clf-svm', LinearSVC(loss='hinge', penalty='l2', max_iter=10))
+          ('clf-svm', LinearSVC(loss='hinge', penalty='l2', max_iter=100))
       ])
 
 svm = svm.fit(x_train, y_train)

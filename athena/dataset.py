@@ -22,7 +22,7 @@ def get_dataset(file_path='dataset.csv', test_size=0.2):
 
 
 if __name__ == '__main__':
-    x_train, y_train, x_test, y_test = get_dataset()
+    x_train, y_train, x_test, y_test = get_dataset(file_path='tagged.csv')
 
     from collections import Counter
 
