@@ -16,7 +16,7 @@ class TelegramAdapter:
         return {
             'id': message.message_id,
             'date': message.date,
-            'text': message.text,
+            'text': message.caption if message.media else message.text,
             'views': message.views,
             'link': message.link
         }
