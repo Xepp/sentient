@@ -13,3 +13,17 @@ $border-radius-sm: 5px;
 $border-radius-md: 10px;
 $border-radius-lg: 20px;
 $sidebar-width: 240px;
+
+$primary: #4361EE;
+$secondary: #4CC9F0;
+$success: #00A676;
+$danger: #FF1F35;
+$info: #ADB5BD;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "danger": $danger,
+  "success": $success,
+  "info": $info
+);

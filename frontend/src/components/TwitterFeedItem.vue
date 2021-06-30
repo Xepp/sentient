@@ -1,31 +1,27 @@
 <template>
-  <div
-    class="twitter-feed-item rounded-lg"
-    style="direction: rtl"
+  <card
+    :variant="variant"
   >
-    <div class="d-flex flex-row justify-content-between w-100">
-      <p class="m-0"> <small> {{ user.name }} </small> <b-badge dir="ltr"> {{ `@${user.screen_name}` }} </b-badge> </p>
-      <b-icon
-        :icon="sentiment === 'pos' ? 'emoji-smile' : sentiment === 'neg' ? 'emoji-frown' : sentiment === 'neu' ? 'emoji-neutral' : 'question-circle'"
-        :variant="sentiment === 'pos' ? 'success' : sentiment === 'neg' ? 'danger' : sentiment === 'neu' ? 'secondary' : 'dark'"
-        font-scale="3"
-      ></b-icon>
-    </div>
     <div
-      class="d-flex flex-row justify-content-start jumbotron border p-0 my-2"
-      :class="[sentiment === 'pos' ? 'border-success' : sentiment === 'neg' ? 'border-danger' : 'border-secondary']"
+      class="d-flex flex-row align-items-center w-100"
+      style="color: #5F5F5F;"
     >
+      <p class="m-0 border-left"> <b-badge dir="ltr" variant="transparent"> {{ user.name }} </b-badge> </p>
+      <p class="m-0" dir="ltr"> {{ jalaliDate }} </p>
+      <p class="m-0 mr-auto"> <b-badge dir="ltr" variant="transparent"> {{ `@${user.screen_name}` }} </b-badge> </p>
+    </div>
+    <div class="d-flex flex-row justify-content-start align-items-start">
       <img
         :src="tweetTypeIcon"
         width="64"
       />
       <p class="p-3 my-2"> {{ text }} </p>
     </div>
-    <p class="m-0"> <small> {{ createdAt }} </small> </p>
-  </div>
+  </card>
 </template>
 
 <script>
+import Card from '@/components/Card'
 import TwitterTweetIcon from '@/assets/icon/twitter-tweet.svg'
 import TwitterRetweetIcon from '@/assets/icon/twitter-retweet.svg'
 import TwitterQuoteIcon from '@/assets/icon/twitter-quote.svg'
@@ -33,6 +29,9 @@ import TwitterReplayIcon from '@/assets/icon/twitter-replay.svg'
 
 export default {
   name: 'TwitterFeedItem',
+  components: {
+    Card
+  },
   props: {
     user: {
       type: Object,
@@ -84,17 +83,17 @@ export default {
     }
   },
   computed: {
-    tweetTypeIcon () {
-      if (this.tweetType === 'tweet') {
-        return TwitterTweetIcon
-      } else if (this.tweetType === 'retweet') {
-        return TwitterRetweetIcon
-      } else if (this.tweetType === 'quote') {
-        return TwitterQuoteIcon
-      } else if (this.tweetType === 'replay') {
-        return TwitterReplayIcon
-      }
-      return TwitterTweetIcon
+    variant: function () {
+      return this.sentiment === 'pos' ? 'success' : this.sentiment === 'neg' ? 'danger' : 'info'
+    },
+    tweetTypeIcon: function () {
+      return this.tweetType === 'retweet'
+        ? TwitterRetweetIcon : this.tweetType === 'quote'
+          ? TwitterQuoteIcon : this.tweetType === 'reply'
+            ? TwitterReplayIcon : TwitterTweetIcon
+    },
+    jalaliDate: function () {
+      return new Date(this.createdAt).toLocaleString('fa-IR')
     }
   }
 }
