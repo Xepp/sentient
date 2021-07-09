@@ -15,7 +15,8 @@
     <telegram-channel-post
       v-for="post in messages"
       :key="post.id"
-      class="shadow d-flex flex-column align-items-start m-4 p-3"
+      class="shadow my-4 mx-auto"
+      style="width: 560px; min-height: 260px;"
       :id="post.id"
       :date="post.date"
       :link="post.link"
