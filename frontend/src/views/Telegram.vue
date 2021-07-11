@@ -1,50 +1,51 @@
 <template>
-  <div class="telegram-view">
-    <img
-      src="@/assets/telegram-logo.svg"
-      alt="telegram logo"
-      width="100"
-    />
-    <telegram-form
-      @submit="onSubmit"
-    ></telegram-form>
-    <analysis-sentiment-pie
-      v-show="messages.length > 0"
-      :items="messages"
-    ></analysis-sentiment-pie>
-    <telegram-channel-post
-      v-for="post in messages"
-      :key="post.id"
-      class="shadow my-4 mx-auto"
-      style="width: 560px; min-height: 260px;"
-      :id="post.id"
-      :date="post.date"
-      :link="post.link"
-      :sentiment="post.sentiment"
-      :text="post.text"
-      :views="post.views"
-      :username="currentUser"
-    ></telegram-channel-post>
-    <b-button
-      v-if="offsetId !== null && offsetId > 1"
-      variant="secondary"
-      @click="loadMore"
-    > Load More </b-button>
-  </div>
+  <b-container class="telegram-view">
+    <b-row>
+      <b-col sm="3">
+        <analysis-section
+          class="mt-5"
+          :items="messages"
+        ></analysis-section>
+      </b-col>
+      <b-col sm="9">
+        <telegram-form
+          @submit="onSubmit"
+        ></telegram-form>
+        <telegram-channel-post
+          v-for="post in messages"
+          :key="post.id"
+          class="shadow my-4 mx-auto"
+          style="width: 560px; min-height: 260px;"
+          :id="post.id"
+          :date="post.date"
+          :link="post.link"
+          :sentiment="post.sentiment"
+          :text="post.text"
+          :views="post.views"
+          :username="currentUser"
+        ></telegram-channel-post>
+        <b-button
+          v-if="offsetId !== null && offsetId > 1"
+          variant="secondary"
+          @click="loadMore"
+        > Load More </b-button>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
 import TelegramChannelPost from '@/components/TelegramChannelPost'
 import TelegramForm from '@/components/TelegramForm'
-import AnalysisSentimentPie from '@/components/AnalysisSentimentPie'
+import AnalysisSection from '@/components/AnalysisSection'
 
 export default {
   name: 'Telegram',
   components: {
     TelegramChannelPost,
     TelegramForm,
-    AnalysisSentimentPie
+    AnalysisSection
   },
   data: function () {
     return {

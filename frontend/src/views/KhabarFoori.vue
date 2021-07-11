@@ -1,44 +1,45 @@
 <template>
-  <div class="khabar-foori-view">
-    <img
-      src="@/assets/khabar-foori-logo.png"
-      alt="khabar foori logo"
-      width="100"
-    />
-    <khabar-foori-form
-      @submit="onSubmit"
-    ></khabar-foori-form>
-    <analysis-sentiment-pie
-      v-show="comments.length > 0"
-      :items="comments"
-    ></analysis-sentiment-pie>
-    <khabar-foori-feed-comment
-      v-for="(comment, index) in comments"
-      :key="index"
-      class="shadow my-4 mx-auto"
-      style="width: 560px; min-height: 260px;"
-      :author="comment.author"
-      :date="comment.date"
-      :like-count="comment.pos"
-      :dislike-count="comment.neg"
-      :sentiment="comment.sentiment"
-      :text="comment.text"
-    ></khabar-foori-feed-comment>
-  </div>
+  <b-container class="khabar-foori-view">
+    <b-row>
+      <b-col sm="3">
+        <analysis-section
+          class="mt-5"
+          :items="comments"
+        ></analysis-section>
+      </b-col>
+      <b-col sm="9">
+        <khabar-foori-form
+          @submit="onSubmit"
+        ></khabar-foori-form>
+        <khabar-foori-feed-comment
+          v-for="(comment, index) in comments"
+          :key="index"
+          class="shadow my-4 mx-auto"
+          style="width: 560px; min-height: 260px;"
+          :author="comment.author"
+          :date="comment.date"
+          :like-count="comment.pos"
+          :dislike-count="comment.neg"
+          :sentiment="comment.sentiment"
+          :text="comment.text"
+        ></khabar-foori-feed-comment>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
 import KhabarFooriFeedComment from '@/components/KhabarFooriFeedComment'
 import KhabarFooriForm from '@/components/KhabarFooriForm'
-import AnalysisSentimentPie from '@/components/AnalysisSentimentPie'
+import AnalysisSection from '@/components/AnalysisSection'
 
 export default {
   name: 'KhabarFoori',
   components: {
     KhabarFooriFeedComment,
     KhabarFooriForm,
-    AnalysisSentimentPie
+    AnalysisSection
   },
   data: function () {
     return {
