@@ -19,11 +19,19 @@ $secondary: #4CC9F0;
 $success: #00A676;
 $danger: #FF1F35;
 $info: #ADB5BD;
+$telegram: #0088CC;
+$twitter: #1DA1F2;
+$instagram: #C13584;
+$khabar-foori: #004F1F;
 
 $theme-colors: (
   "primary": $primary,
   "secondary": $secondary,
   "danger": $danger,
   "success": $success,
-  "info": $info
+  "info": $info,
+  "telegram": $telegram,
+  "twitter": $twitter,
+  "instagram": $instagram,
+  "khabar-foori": $khabar-foori
 );
