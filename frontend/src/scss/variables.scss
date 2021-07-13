@@ -1,0 +1,29 @@
+$transition-default: all .2s ease-in-out;
+$fontsize-xxs: 10px;
+$fontsize-xs: 12px;
+$fontsize-sm: 14px;
+$fontsize-md: 16px;
+$fontsize-lg: 18px;
+$fontsize-xlg: 22px;
+$fontsize-xxlg: 26px;
+$fontsize-xxxlg: 40px;
+$border-radius-xxs: 1px;
+$border-radius-xs: 2px;
+$border-radius-sm: 5px;
+$border-radius-md: 10px;
+$border-radius-lg: 20px;
+$sidebar-width: 240px;
+
+$primary: #4361EE;
+$secondary: #4CC9F0;
+$success: #00A676;
+$danger: #FF1F35;
+$info: #ADB5BD;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "danger": $danger,
+  "success": $success,
+  "info": $info
+);
