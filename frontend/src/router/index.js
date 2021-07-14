@@ -16,6 +16,14 @@ const routes = [
     }
   },
   {
+    path: '/search',
+    name: 'Search',
+    component: () => import('@/views/Search'),
+    meta: {
+      layout: BaseLayout
+    }
+  },
+  {
     path: '/khabar-foori',
     name: 'KhabarFoori',
     component: () => import('@/views/KhabarFoori'),
