@@ -1,7 +1,7 @@
 <template>
   <div
     class="position-sticky"
-    style="top: 0;"
+    style="top: 150px;"
   >
     <analysis-sentiment
       :items="items"
