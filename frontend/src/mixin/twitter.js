@@ -4,6 +4,8 @@ import { uniqBy } from 'lodash'
 const TwitterMixin = {
   data: function () {
     return {
+      twitterItems: [],
+      twitterHasMore: false,
       twitterMaxId: null,
       twitterCurrentUser: null
     }
@@ -13,10 +15,10 @@ const TwitterMixin = {
       getTwitterStatuses: 'media/getTwitterStatuses'
     }),
     setTwitterPagination () {
-      if (this.items.length !== 0) {
-        this.twitterMaxId = this.items[this.items.length - 1].id
+      if (this.twitterItems.length !== 0) {
+        this.twitterMaxId = this.twitterItems[this.twitterItems.length - 1].id
       }
-      this.hasMore = this.twitterMaxId !== null
+      this.twitterHasMore = this.twitterMaxId !== null
     },
     onTwitterSubmit (username) {
       this.twitterMaxId = null
@@ -24,14 +26,14 @@ const TwitterMixin = {
 
       this.getTwitterStatuses({ username })
         .then(res => {
-          this.items = [...res.data.tweets]
+          this.twitterItems = [...res.data.tweets]
           this.setTwitterPagination()
         })
     },
     onTwitterLoadMore () {
       this.getTwitterStatuses({ username: this.twitterCurrentUser, maxId: this.twitterMaxId })
         .then(res => {
-          this.items = uniqBy([...this.items, ...res.data.tweets], 'id')
+          this.twitterItems = uniqBy([...this.twitterItems, ...res.data.tweets], 'id')
           this.setTwitterPagination()
         })
     }

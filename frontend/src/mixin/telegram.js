@@ -3,6 +3,8 @@ import { mapActions } from 'vuex'
 const TelegramMixin = {
   data: function () {
     return {
+      telegramItems: [],
+      telegramHasMore: false,
       telegramOffsetId: null,
       telegramCurrentUser: null
     }
@@ -12,10 +14,10 @@ const TelegramMixin = {
       getTelegramPosts: 'media/getTelegramPosts'
     }),
     setTelegramPagination () {
-      if (this.items.length !== 0) {
-        this.telegramOffsetId = this.items[this.items.length - 1].id
+      if (this.telegramItems.length !== 0) {
+        this.telegramOffsetId = this.telegramItems[this.telegramItems.length - 1].id
       }
-      this.hasMore = this.telegramOffsetId !== null && this.telegramOffsetId > 1
+      this.telegramHasMore = this.telegramOffsetId !== null && this.telegramOffsetId > 1
     },
     onTelegramSubmit (username) {
       this.telegramOffsetId = null
@@ -23,14 +25,14 @@ const TelegramMixin = {
 
       this.getTelegramPosts({ username })
         .then(res => {
-          this.items = [...res.data.messages]
+          this.telegramItems = [...res.data.messages]
           this.setTelegramPagination()
         })
     },
     onTelegramLoadMore () {
       this.getTelegramPosts({ username: this.telegramCurrentUser, offsetId: this.telegramOffsetId })
         .then(res => {
-          this.items = [...this.items, ...res.data.messages]
+          this.telegramItems = [...this.telegramItems, ...res.data.messages]
           this.setTelegramPagination()
         })
     }

@@ -43,9 +43,20 @@ export default {
   mixins: [TelegramMixin, TwitterMixin, KhabarFooriMixin],
   data: function () {
     return {
-      source: 'telegram',
-      items: [],
-      hasMore: false
+      source: 'telegram'
+    }
+  },
+  computed: {
+    items () {
+      if (this.source === 'telegram') return this.telegramItems
+      else if (this.source === 'twitter') return this.twitterItems
+      else if (this.source === 'khabar-foori') return this.khabarFooriItems
+      return []
+    },
+    hasMore () {
+      if (this.source === 'telegram') return this.telegramHasMore
+      else if (this.source === 'twitter') return this.twitterHasMore
+      return false
     }
   },
   methods: {
@@ -60,8 +71,6 @@ export default {
     },
     changeSource (source) {
       this.source = source
-      this.items = []
-      this.hasMore = false
     },
     loadMore () {
       if (this.source === 'telegram') {
