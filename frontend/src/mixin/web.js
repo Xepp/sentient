@@ -1,6 +1,11 @@
 import { mapActions } from 'vuex'
 
 const KhabarFooriMixin = {
+  data: function () {
+    return {
+      khabarFooriItems: []
+    }
+  },
   methods: {
     ...mapActions({
       getKhabarFooriComments: 'media/getKhabarFooriComments'
@@ -8,7 +13,7 @@ const KhabarFooriMixin = {
     onKhabarFooriSubmit (url) {
       this.getKhabarFooriComments({ url })
         .then(res => {
-          this.items = [...res.data.comments]
+          this.khabarFooriItems = [...res.data.comments]
         })
     }
   }
