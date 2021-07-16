@@ -10,37 +10,48 @@
       <b-col sm="3">
         <analysis-section
           class="mt-5"
-          :items="items"
+          :items="filteredItems"
           :source="source"
         ></analysis-section>
       </b-col>
-      <b-col sm="9">
+      <b-col sm="6">
         <result-section
           class="my-5"
           :source="source"
-          :items="items"
+          :items="filteredItems"
           :has-more="hasMore"
           @load-more="loadMore"
         ></result-section>
+      </b-col>
+      <b-col sm="3">
+        <filter-section
+          class="mt-5"
+          :keyword="filterKeyword"
+          :selected-sentiment="filterSentiment"
+          @filter-keyword="onFilterKeyword"
+          @filter-sentiment="onFilterSentiment"
+        ></filter-section>
       </b-col>
     </b-row>
   </b-container>
 </template>
 
 <script>
-import { TelegramMixin, TwitterMixin, KhabarFooriMixin } from '@/mixin'
+import { FilterMixin, TelegramMixin, TwitterMixin, KhabarFooriMixin } from '@/mixin'
 import AnalysisSection from '@/components/AnalysisSection'
 import QuerySection from '@/components/QuerySection'
 import ResultSection from '@/components/ResultSection'
+import FilterSection from '@/components/FilterSection'
 
 export default {
   name: 'Search',
   components: {
     AnalysisSection,
     QuerySection,
-    ResultSection
+    ResultSection,
+    FilterSection
   },
-  mixins: [TelegramMixin, TwitterMixin, KhabarFooriMixin],
+  mixins: [FilterMixin, TelegramMixin, TwitterMixin, KhabarFooriMixin],
   data: function () {
     return {
       source: 'telegram'
@@ -78,6 +89,12 @@ export default {
       } else if (this.source === 'twitter') {
         this.onTwitterLoadMore()
       }
+    },
+    onFilterKeyword (keyword) {
+      this.filterKeyword = keyword
+    },
+    onFilterSentiment (selectedSentiment) {
+      this.filterSentiment = [...selectedSentiment]
     }
   }
 }
