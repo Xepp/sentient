@@ -7,7 +7,8 @@ const TwitterMixin = {
       twitterItems: [],
       twitterHasMore: false,
       twitterMaxId: null,
-      twitterCurrentUser: null
+      twitterCurrentUser: null,
+      twitterZeroState: true
     }
   },
   methods: {
@@ -23,18 +24,27 @@ const TwitterMixin = {
     onTwitterSubmit (username) {
       this.twitterMaxId = null
       this.twitterCurrentUser = username
+      this.loadingState = true
 
       this.getTwitterStatuses({ username })
         .then(res => {
           this.twitterItems = [...res.data.tweets]
           this.setTwitterPagination()
+          if (this.twitterZeroState) this.twitterZeroState = false
+        })
+        .finally(() => {
+          this.loadingState = false
         })
     },
     onTwitterLoadMore () {
+      this.loadingState = true
       this.getTwitterStatuses({ username: this.twitterCurrentUser, maxId: this.twitterMaxId })
         .then(res => {
           this.twitterItems = uniqBy([...this.twitterItems, ...res.data.tweets], 'id')
           this.setTwitterPagination()
+        })
+        .finally(() => {
+          this.loadingState = false
         })
     }
   }
