@@ -48,11 +48,11 @@
 </template>
 
 <script>
-import { GeneralMixin } from '@/mixin'
+import { QueryMixin } from '@/mixin'
 
 export default {
   name: 'QuerySection',
-  mixins: [GeneralMixin],
+  mixins: [QueryMixin],
   props: {
     source: {
       type: String,
