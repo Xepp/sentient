@@ -1,20 +1,16 @@
 const GeneralMixin = {
-  computed: {
-    sources () {
-      return [
-        { text: 'اینستاگرام', value: 'instagram', placeholder: 'link' },
-        { text: 'تلگرام', value: 'telegram', placeholder: 'channel' },
-        { text: 'توییتر', value: 'twitter', placeholder: 'username' },
-        { text: 'خبرفوری', value: 'khabar-foori', placeholder: 'link' }
-      ]
+  data: function () {
+    return {
+      loadingState: false
     }
   },
-  methods: {
-    getSourceText (source) {
-      return this.sources.find((s) => s.value === source).text
-    },
-    getSourcePlaceholder (source) {
-      return this.sources.find((s) => s.value === source).placeholder
+  computed: {
+    zeroState () {
+      if (this.source === 'telegram') return this.telegramZeroState
+      else if (this.source === 'twitter') return this.twitterZeroState
+      else if (this.source === 'khabar-foori') return this.khabarFooriZeroState
+
+      return true
     }
   }
 }

@@ -6,7 +6,8 @@ const TelegramMixin = {
       telegramItems: [],
       telegramHasMore: false,
       telegramOffsetId: null,
-      telegramCurrentUser: null
+      telegramCurrentUser: null,
+      telegramZeroState: true
     }
   },
   methods: {
@@ -22,18 +23,27 @@ const TelegramMixin = {
     onTelegramSubmit (username) {
       this.telegramOffsetId = null
       this.telegramCurrentUser = username
+      this.loadingState = true
 
       this.getTelegramPosts({ username })
         .then(res => {
           this.telegramItems = [...res.data.messages]
           this.setTelegramPagination()
+          if (this.telegramZeroState) this.telegramZeroState = false
+        })
+        .finally(() => {
+          this.loadingState = false
         })
     },
     onTelegramLoadMore () {
+      this.loadingState = true
       this.getTelegramPosts({ username: this.telegramCurrentUser, offsetId: this.telegramOffsetId })
         .then(res => {
           this.telegramItems = [...this.telegramItems, ...res.data.messages]
           this.setTelegramPagination()
+        })
+        .finally(() => {
+          this.loadingState = false
         })
     }
   }
