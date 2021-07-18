@@ -20,4 +20,3 @@ class TwitterAdapter:
             tweet_mode='extended')
 
         return [tweet_cleanizer(tweet) for tweet in timeline]
-

@@ -1,21 +1,26 @@
 <template>
   <div
     class="position-sticky"
-    style="top: 0;"
+    style="top: 150px;"
   >
     <analysis-sentiment
       :items="items"
     ></analysis-sentiment>
+    <analysis-statistics
+      :items="items"
+    ></analysis-statistics>
   </div>
 </template>
 
 <script>
 import AnalysisSentiment from '@/components/AnalysisSentiment'
+import AnalysisStatistics from '@/components/AnalysisStatistics'
 
 export default {
   name: 'AnalysisSection',
   components: {
-    AnalysisSentiment
+    AnalysisSentiment,
+    AnalysisStatistics
   },
   props: {
     items: {

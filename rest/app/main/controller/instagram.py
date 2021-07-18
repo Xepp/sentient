@@ -29,4 +29,3 @@ def get_comments_by_shortcode(shortcode):
     }
 
     return jsonify(res)
-

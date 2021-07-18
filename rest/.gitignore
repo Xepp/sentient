@@ -139,6 +139,15 @@ cython_debug/
 
 # vim
 *.swp
+<<<<<<< HEAD
+<<<<<<< HEAD
 
 # pyrogram
 *.session
+=======
+>>>>>>> feat: added rest structure dockerized
+=======
+
+# pyrogram
+*.session
+>>>>>>> feat: added telegram source in rest

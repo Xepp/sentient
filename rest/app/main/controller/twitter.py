@@ -28,4 +28,3 @@ def get_tweets_by_username(username):
     }
 
     return jsonify(res)
-

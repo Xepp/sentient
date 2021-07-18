@@ -40,4 +40,3 @@ def get_khabar_foori_comments():
     }
 
     return jsonify(res)
-
