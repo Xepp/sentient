@@ -7,7 +7,7 @@
       style="color: #5F5F5F;"
     >
       <p class="m-0 border-left"> <b-badge dir="ltr" variant="transparent"> {{ username }} </b-badge> </p>
-      <p class="m-0" dir="ltr"> {{ createdAt }} </p>
+      <p class="m-0" dir="ltr"> {{ jalaliDate }} </p>
     </div>
     <p class="p-3 my-2"> {{ text }} </p>
   </card>
@@ -49,6 +49,9 @@ export default {
   computed: {
     variant: function () {
       return this.sentiment === 'pos' ? 'success' : this.sentiment === 'neg' ? 'danger' : 'info'
+    },
+    jalaliDate: function () {
+      return new Date(this.createdAt * 1000).toLocaleString('fa-IR')
     }
   }
 }

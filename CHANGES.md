@@ -6,8 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ## Fixed
-- Instagram Crawler
-- Telegram Channel username/title
+- Instagram Crawler (#24)
+- Telegram Channel username/title (#36)
+- Instagram jalali date (#39)
 
 [1.0.0] - 2021-07-13
 ### Added
