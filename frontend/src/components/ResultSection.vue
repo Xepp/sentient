@@ -14,7 +14,8 @@
         :sentiment="post.sentiment"
         :text="post.text"
         :views="post.views"
-        username="currentUser"
+        :channel-username="post.channel.username"
+        :channel-title="post.channel.title"
       ></telegram-channel-post>
     </template>
     <template
@@ -51,6 +52,21 @@
         :text="comment.text"
       ></khabar-foori-feed-comment>
     </template>
+    <template
+      v-else-if="source === 'instagram'"
+    >
+      <instagram-post-comment
+        v-for="comment in items"
+        :key="comment.id"
+        class="shadow my-4 mx-auto"
+        style="width: 520px; min-height: 200px;"
+        :id="comment.id"
+        :sentiment="comment.sentiment"
+        :text="comment.text"
+        :username="comment.username"
+        :created-at="comment.created_at"
+      ></instagram-post-comment>
+    </template>
     <b-button
       v-if="hasMore"
       class="mx-auto"
@@ -65,13 +81,15 @@
 import TelegramChannelPost from '@/components/TelegramChannelPost'
 import TwitterFeedItem from '@/components/TwitterFeedItem'
 import KhabarFooriFeedComment from '@/components/KhabarFooriFeedComment'
+import InstagramPostComment from '@/components/InstagramPostComment'
 
 export default {
   name: 'ResultSection',
   components: {
     TelegramChannelPost,
     TwitterFeedItem,
-    KhabarFooriFeedComment
+    KhabarFooriFeedComment,
+    InstagramPostComment
   },
   props: {
     source: {
