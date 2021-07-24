@@ -14,7 +14,8 @@
         :sentiment="post.sentiment"
         :text="post.text"
         :views="post.views"
-        username="currentUser"
+        :channel-username="post.channel.username"
+        :channel-title="post.channel.title"
       ></telegram-channel-post>
     </template>
     <template

@@ -6,8 +6,9 @@
       class="d-flex flex-row align-items-center w-100"
       style="color: #5F5F5F;"
     >
-      <p class="m-0 border-left"> <b-badge dir="ltr" variant="transparent"> {{ `@${username}/${id}` }} </b-badge> </p>
+      <p class="m-0 border-left"> <b-badge dir="rtl" variant="transparent"> {{ channelTitle }} </b-badge> </p>
       <p class="m-0" dir="ltr"> {{ jalaliDate }} </p>
+      <p class="m-0 mr-auto"> <b-badge dir="ltr" variant="transparent"> {{ `@${channelUsername}` }} </b-badge> </p>
     </div>
     <p class="p-3 my-2"> {{ text }} </p>
   </card>
@@ -22,10 +23,6 @@ export default {
     Card
   },
   props: {
-    username: {
-      type: String,
-      required: true
-    },
     date: {
       type: Number,
       required: true
@@ -52,6 +49,16 @@ export default {
       type: Number,
       required: false,
       default: 1
+    },
+    channelUsername: {
+      type: String,
+      required: false,
+      default: ''
+    },
+    channelTitle: {
+      type: String,
+      required: false,
+      default: ''
     }
   },
   computed: {
