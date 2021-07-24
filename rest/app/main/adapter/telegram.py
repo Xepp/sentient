@@ -18,7 +18,11 @@ class TelegramAdapter:
             'date': message.date,
             'text': message.caption if message.media else message.text,
             'views': message.views,
-            'link': message.link
+            'link': message.link,
+            'channel': {
+                'username': message.chat.username,
+                'title': message.chat.title
+            }
         }
 
     def get_channel_messages(self, username, offset_id=0):
