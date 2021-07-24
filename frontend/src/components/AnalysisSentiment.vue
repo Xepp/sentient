@@ -30,7 +30,7 @@ export default {
       const neg = this.items.reduce((acc, cur) => cur.sentiment === 'neg' ? ++acc : acc, 0)
 
       return {
-        labels: ['Pos', 'Neu', 'Neg'],
+        labels: ['مثبت', 'خنثی', 'منفی'],
         datasets: [
           {
             backgroundColor: ['#00A676', '#ADB5BD', '#FF1F35'],

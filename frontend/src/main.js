@@ -10,11 +10,11 @@ Vue.use(BootstrapVueIcons)
 
 Vue.config.productionTip = false
 
-Vue.mixin({
-  created () {
-    console.log('[created] ' + this.$options.name)
-  }
-})
+// Vue.mixin({
+//   created () {
+//     console.log('[created] ' + this.$options.name)
+//   }
+// })
 
 new Vue({
   router,
