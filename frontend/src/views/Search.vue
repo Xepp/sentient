@@ -65,7 +65,7 @@
 </template>
 
 <script>
-import { GeneralMixin, FilterMixin, TelegramMixin, TwitterMixin, KhabarFooriMixin } from '@/mixin'
+import { GeneralMixin, FilterMixin, TelegramMixin, TwitterMixin, KhabarFooriMixin, InstagramMixin } from '@/mixin'
 import AnalysisSection from '@/components/AnalysisSection'
 import QuerySection from '@/components/QuerySection'
 import ResultSection from '@/components/ResultSection'
@@ -79,7 +79,7 @@ export default {
     ResultSection,
     FilterSection
   },
-  mixins: [GeneralMixin, FilterMixin, TelegramMixin, TwitterMixin, KhabarFooriMixin],
+  mixins: [GeneralMixin, FilterMixin, TelegramMixin, TwitterMixin, KhabarFooriMixin, InstagramMixin],
   data: function () {
     return {
       source: 'telegram'
@@ -90,11 +90,13 @@ export default {
       if (this.source === 'telegram') return this.telegramItems
       else if (this.source === 'twitter') return this.twitterItems
       else if (this.source === 'khabar-foori') return this.khabarFooriItems
+      else if (this.source === 'instagram') return this.instagramItems
       return []
     },
     hasMore () {
       if (this.source === 'telegram') return this.telegramHasMore
       else if (this.source === 'twitter') return this.twitterHasMore
+      else if (this.source === 'instagram') return this.instagramHasMore
       return false
     },
     alertBox () {
@@ -128,6 +130,8 @@ export default {
         this.onTwitterSubmit(input)
       } else if (source === 'khabar-foori') {
         this.onKhabarFooriSubmit(input)
+      } else if (source === 'instagram') {
+        this.onInstagramSubmit(input)
       }
     },
     changeSource (source) {
@@ -138,6 +142,8 @@ export default {
         this.onTelegramLoadMore()
       } else if (this.source === 'twitter') {
         this.onTwitterLoadMore()
+      } else if (this.source === 'instagram') {
+        this.onInstagramLoadMore()
       }
     },
     onFilterKeyword (keyword) {
