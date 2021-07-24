@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.1] - 2021-07-25
+### Fixed
+- Removed unnecessary file Search.vue
+
 ## [1.2.0] - 2021-07-25
 ### Fixed
 - Instagram Crawler (#24)
