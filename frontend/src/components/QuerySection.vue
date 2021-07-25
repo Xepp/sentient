@@ -36,6 +36,7 @@
           style="min-width: 360px;"
           id="link-input"
           :placeholder="getSourcePlaceholder(source)"
+          @keydown.enter.prevent="submit"
         ></b-form-input>
       </b-input-group>
       <b-button
