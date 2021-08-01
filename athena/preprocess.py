@@ -25,4 +25,3 @@ def text_cleaner(text):
 
 def word_tokenizer(text):
     return word_tokenize(text)
-

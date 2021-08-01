@@ -136,3 +136,11 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# Assets dir
+assets/
+
+# Dataset dir
+dataset/instagram*
+dataset/telegram*
+dataset/twitter*

@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2021-08-02
+### Added
+- Enter key down event in query
+- Athena new dataset & Sparse Model
+- Auto generate swagger (#47)
+### Fixed
+- Athena refactored (#41)
+
 ## [1.2.1] - 2021-07-25
 ### Fixed
 - Removed unnecessary file Search.vue

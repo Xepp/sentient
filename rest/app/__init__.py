@@ -1,12 +1,13 @@
 import os
 from flask import json
+from flask import Blueprint
+from flask_restx import Api
 from werkzeug.exceptions import HTTPException
-
 from app.main import create_app
-from app.main.controller.instagram import instagram_blueprint
-from app.main.controller.twitter import twitter_blueprint
-from app.main.controller.web import web_blueprint
-from app.main.controller.telegram import telegram_blueprint
+from app.main.controller.instagram import api as instagram_namespace
+from app.main.controller.twitter import api as twitter_namespace
+from app.main.controller.web import api as web_namespace
+from app.main.controller.telegram import api as telegram_namespace
 
 
 env = 'prod' if os.getenv('FLASK_ENV') == 'production' else 'dev'
@@ -26,7 +27,16 @@ def handle_http_exception(e):
     return response
 
 
-app.register_blueprint(instagram_blueprint, url_prefix='/api/instagram')
-app.register_blueprint(twitter_blueprint, url_prefix='/api/twitter')
-app.register_blueprint(web_blueprint, url_prefix='/api/web')
-app.register_blueprint(telegram_blueprint, url_prefix='/api/telegram')
+blueprint = Blueprint('api', __name__)
+api = Api(blueprint,
+          title='Gecko',
+          version='1.0',
+          description='Crawler of persian social media')
+
+api.add_namespace(instagram_namespace, path='/api/instagram')
+api.add_namespace(twitter_namespace, path='/api/twitter')
+api.add_namespace(web_namespace, path='/api/web')
+api.add_namespace(telegram_namespace, path='/api/telegram')
+
+
+app.register_blueprint(blueprint)
