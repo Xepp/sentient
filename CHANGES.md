@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Enter key down event in query
+- Athena new dataset & Sparse Model
+- Auto generate swagger (#47)
+### Fixed
+- Athena refactored (#41)
 
 ## [1.2.1] - 2021-07-25
 ### Fixed
