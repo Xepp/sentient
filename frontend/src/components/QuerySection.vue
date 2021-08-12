@@ -1,7 +1,7 @@
 <template>
   <div
-    class="query-section mx-auto position-sticky bg-white"
-    style="direction: rtl; max-width: fit-content; top: 0px; height: 150px; z-index: 999;"
+    class="query-section mx-auto position-sticky"
+    style="direction: rtl; max-width: fit-content; top: 0px; height: 150px; z-index: 999; background-color: #F2F2F2;"
   >
     <b-form
       class="justify-content-center py-5"
