@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-row align-items stretch rounded-lg">
+  <div class="d-flex flex-row align-items stretch rounded-lg bg-light">
     <div
       class="d-flex flex-column align-items-start p-3"
       style="direction: rtl; width: 504px;"

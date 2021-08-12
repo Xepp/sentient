@@ -7,6 +7,14 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
+    name: 'Login',
+    component: () => import('@/views/Login'),
+    meta: {
+      layout: BaseLayout
+    }
+  },
+  {
+    path: '/search',
     name: 'Home',
     component: () => import('@/views/Home'),
     meta: {
