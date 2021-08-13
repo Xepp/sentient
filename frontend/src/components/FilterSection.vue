@@ -1,7 +1,7 @@
 <template>
   <div
     class="position-sticky"
-    style="top: 150px;"
+    style="top: 200px;"
   >
     <b-input-group
       size="sm"

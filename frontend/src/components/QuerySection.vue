@@ -1,10 +1,23 @@
 <template>
   <div
     class="query-section mx-auto position-sticky"
-    style="direction: rtl; max-width: fit-content; top: 0px; height: 150px; z-index: 999; background-color: #F2F2F2;"
+    style="direction: rtl; max-width: fit-content; top: 0px; height: 200px; z-index: 999; background-color: #F2F2F2;"
   >
+    <div
+      class="d-flex flex-row justify-content-center pt-3 mb-3"
+      style="height: 100px;"
+    >
+      <img
+        class="mx-3 bg-info p-1 rounded"
+        src="@/assets/sadra-logo.png"
+      />
+      <img
+        class="mx-3"
+        src="@/assets/defence-logo.png"
+      />
+    </div>
     <b-form
-      class="justify-content-center py-5"
+      class="justify-content-center py-3"
       inline
     >
       <b-input-group
