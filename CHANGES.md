@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Authentication (Login) form view
+- Logo & marks of the company in frontend
 
 ## [1.3.0] - 2021-08-02
 ### Added
